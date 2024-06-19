@@ -1,0 +1,7 @@
+{
+  "name": "CheckNoteApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
