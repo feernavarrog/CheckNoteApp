@@ -1,0 +1,92 @@
+<ion-toolbar color="dark">
+  <ion-title class="ion-text-center">Informacion de perfil</ion-title>
+</ion-toolbar>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Avatar</ion-card-title>
+    </ion-card-header>
+
+    <div *ngIf="image" class="image-container">
+      <ion-img [src]="image"></ion-img>
+    </div>
+    <div class="button-container">
+      <ion-button class="ion-button-container" fill="clear" (click)="attachPhotoFromCamera()">
+        <ion-icon class="ion-icon-container" name="camera-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="ion-button-container" fill="clear" (click)="attachPhotoFromGallery()">
+        <ion-icon class="ion-icon-container" name="cloud-upload-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="ion-button-container" fill="clear" (click)="removeImage()">
+        <ion-icon class="ion-icon-container" name="trash-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <ion-item>
+    <ion-label position="floating">Ingrese su correo</ion-label>
+    <ion-input [(ngModel)]="email" type="email" (ionInput)="checkEmailAvailability(); toggleSaveButton()"></ion-input>
+    <ion-text class="ion-text-xs" *ngIf="emailAvailable" color="success"><ion-icon name="checkmark-circle"></ion-icon>Disponible</ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="firstName" type="text" required minlength="1" (ionInput)="toggleSaveButton()"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input [(ngModel)]="lastName" type="text" required minlength="1" (ionInput)="toggleSaveButton()"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Fecha Nacimiento</ion-label>
+    <ion-input [(ngModel)]="bornDate" type="text" required minlength="1"></ion-input>
+    <ion-button color="dark" expand="block" (click)="toggleDatePicker()">
+      <ion-icon name="calendar-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item *ngIf="showDatePicker">
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDate" (ionChange)="setBornDate($event.detail.value); toggleSaveButton()"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Direccion</ion-label>
+    <ion-input [(ngModel)]="address" type="text" required minlength="1" (ionInput)="toggleSaveButton()"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input [(ngModel)]="password" type="password" (ionInput)="toggleSaveButton()"></ion-input>
+    <ion-note> La contraseña debe contar con una mayuscula, un numero y entre 8 a 10 caracteres</ion-note>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Repita la contraseña</ion-label>
+    <ion-input [(ngModel)]="passwordRepeat" type="password"></ion-input>
+  </ion-item>
+
+  <ion-card *ngIf="saveButton">
+    <ion-card-header>
+      <ion-card-title>Ingrese contraseña actual</ion-card-title>
+    </ion-card-header>
+
+    <ion-item>
+      <ion-label position="floating">contraseña</ion-label>
+      <ion-input [(ngModel)]="actualPassword" type="password"></ion-input>
+      <ion-note> La contraseña debe contar con una mayuscula, un numero y entre 8 a 10 caracteres</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Repita la contraseña</ion-label>
+      <ion-input [(ngModel)]="actualPasswordRepeat" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="saveButton"> 
+      <ion-button class="ion-padding" color="dark" expand="block" (click)="saveChanges()">Guardar Cambios</ion-button>
+    </ion-item>
+  </ion-card>  
+</ion-content>

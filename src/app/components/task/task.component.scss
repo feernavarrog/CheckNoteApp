@@ -1,0 +1,29 @@
+.small-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 10;
+}
+
+.floating-buttons ion-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floating-buttons ion-icon {
+  font-size: 24px;
+}

@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>CheckNote APP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input [(ngModel)]="emailInput" name="emailInput"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Contraseña</ion-label>
+    <ion-input [(ngModel)]="passwordInput" type="password" name="passwordInput"></ion-input>
+  </ion-item>
+
+  <ion-button color="dark" expand="block" (click)="login()">Ingresar</ion-button>
+
+  <a class="ion-text-center" routerLink="/register">Crea tu cuenta gratis aqui</a>
+</ion-content>

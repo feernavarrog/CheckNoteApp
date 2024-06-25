@@ -1,0 +1,7 @@
+<div *ngIf="isVisible" class="suggestion">
+  <ion-icon name="bulb-outline" class="icon"></ion-icon>
+  <div class="content">
+    <strong>Sugerencia:</strong> {{ suggestion }}
+  </div>
+  <ion-icon name="close" class="close-icon" (click)="closeSuggestion()"></ion-icon>
+</div>

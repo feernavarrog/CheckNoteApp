@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notas archivadas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list>
+  <ion-item-sliding #slidingItem *ngFor="let note of myArchivedNotes; let i = index">
+    <ion-item (click)="viewNote(i)">
+      <ion-label>
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.description }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="dark" (click)="desarchiveNote(i)">
+        <ion-icon name="archive-outline"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="dark" (click)="deleteNote(i)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-card class="task-details" [hidden]="!showDetails" [style.visibility]="showDetails ? 'visible' : 'hidden'">
+  <ion-card-header>
+    Nota
+  </ion-card-header>
+  <ion-card-content>
+    <h2>{{ selectedTask?.title }}</h2>
+    <p>{{ selectedTask?.description }}</p>
+    <div *ngIf="selectedTask?.image">      
+    <img [src]="selectedTask?.image" alt="Foto adjunta" />
+    </div>
+  </ion-card-content>
+  <ion-button class="ion-padding" color="dark" expand="block" (click)="hideTaskDetails()">volver<ion-icon slot="start" name="arrow-back"></ion-icon></ion-button>
+</ion-card>

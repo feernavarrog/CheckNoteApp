@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear/Editar Nota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input [(ngModel)]="title" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-textarea [(ngModel)]="description" rows="6"></ion-textarea>
+  </ion-item>
+
+  <ion-card *ngFor="let img of images">
+    <ion-img [src]="img.image" class="small-image"></ion-img>
+    <ion-button (click)="removeImage(img.id)">Eliminar</ion-button>
+  </ion-card>
+
+</ion-content>
+
+<div class="floating-buttons">
+  <ion-button color="dark" expand="block" (click)="create()" *ngIf="!userIsEditing">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-button>
+  <ion-button color="dark" expand="block" (click)="edit()" *ngIf="userIsEditing">
+    <ion-icon name="save-outline"></ion-icon>
+  </ion-button>
+  <ion-button (click)="attachPhotoFromCamera()" *ngIf="userIsEditing">
+    <ion-icon name="camera-outline"></ion-icon>
+  </ion-button>
+  <ion-button (click)="attachPhotoFromGallery()" *ngIf="userIsEditing">
+    <ion-icon name="image-outline"></ion-icon>
+  </ion-button>
+</div>

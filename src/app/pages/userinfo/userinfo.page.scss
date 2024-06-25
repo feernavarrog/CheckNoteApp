@@ -1,0 +1,36 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  
+    ion-img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .ion-button-container {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    --border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .ion-icon-container {
+      font-size: 24px;
+    }
+  }
+  

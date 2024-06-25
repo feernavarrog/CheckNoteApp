@@ -1,20 +1,78 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      CheckNote APP
     </ion-title>
+    <ion-buttons slot="primary">
+      Perfil
+      <ion-button (click)="goToUserInfo()" color="primary" fill="outline">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()" color="danger" fill="outline">
+        Salir
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Menu principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-suggestion [suggestion]="currentSuggestion"></app-suggestion>
+
+<ion-content class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Bienvenido, {{ firstName }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="welcome-container">
+    <h1>Bienvenido, {{ firstName }}</h1>
+    <div class="grid-container">
+      <ion-button expand="block" color="dark" (click)="createTask()" class="square-button">
+        Nueva tarea
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button expand="block" color="dark" (click)="createNote()" class="square-button">
+        Nueva nota
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-button>
+      <ion-button expand="block" color="dark" (click)="goToNotes()" class="square-button">
+        Ir a Notas
+        <ion-icon name="document-text-outline"></ion-icon>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+      <ion-button expand="block" color="dark" (click)="goToTasks()" class="square-button">
+        Ir a Tareas
+        <ion-icon name="create-outline"></ion-icon>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
   </div>
+
+  <div *ngIf="showCommentBox" class="comment-box">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Deja tu comentario
+          <ion-icon name="close-circle" (click)="showCommentBox = false" style="float: right;"></ion-icon>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-textarea [(ngModel)]="commentText" placeholder="Escribe tu comentario aquí..."></ion-textarea>
+        <ion-button expand="block" color="primary" (click)="submitComment()">Enviar</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-button expand="block" color="primary" class="comment-button" (click)="showCommentBox = true">
+    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+    Dejar un comentario
+  </ion-button>
+
 </ion-content>

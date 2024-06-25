@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tareas por hacer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list>
+  <ion-item-sliding #slidingSugItem *ngFor="let task of suggerenceTask; let i = index">
+    <ion-item (click)="showTaskDetails(task)">
+      <ion-label>
+        <h2>{{ task.titulo }}</h2>
+        <p>{{ task.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="dark" (click)="deleteSuggerenceTask(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-list>
+  <ion-item-sliding class="sliding-task" #slidingItem *ngFor="let task of taskTodo; let i = index">
+    <ion-item (click)="showTaskDetails(task)">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="start">
+      <ion-item-option color="dark" (click)="editTask(i)">
+        <ion-icon name="create"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    <ion-item-options side="end">
+      <ion-item-option color="dark" (click)="completeTask(i)">
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="dark" (click)="deleteTask(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-card class="task-details" [hidden]="!showDetails" [style.visibility]="showDetails ? 'visible' : 'hidden'">
+  <ion-card-header>
+    Detalles de la Tarea
+  </ion-card-header>
+  <ion-card-content>
+    <h2>{{ selectedTask?.title }}</h2>
+    <p>{{ selectedTask?.description }}</p>
+    <div *ngIf="selectedTask?.image">      
+    <img [src]="selectedTask?.image" alt="Foto adjunta" />
+    </div>
+  </ion-card-content>
+  <ion-button class="ion-padding" color="dark" expand="block" (click)="hideTaskDetails()">volver<ion-icon slot="start" name="arrow-back"></ion-icon></ion-button>
+</ion-card>
