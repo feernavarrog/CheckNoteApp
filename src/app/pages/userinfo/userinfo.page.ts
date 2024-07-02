@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
   providers: [DatePipe]
 })
 export class UserinfoPage implements OnInit {
+  updateUser() {
+    throw new Error('Method not implemented.');
+  }
 
     emailAvailable: boolean | undefined;
     showDatePicker  : boolean = false;
@@ -35,6 +38,7 @@ export class UserinfoPage implements OnInit {
 
     actualPassword: string = '';
     actualPasswordRepeat: string = '';
+  user: any;
   
     constructor(
       private datePipe: DatePipe,
