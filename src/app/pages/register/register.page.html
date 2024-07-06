@@ -6,23 +6,23 @@
 
   <ion-item>
     <ion-label position="floating">Ingrese su correo</ion-label>
-    <ion-input [(ngModel)]="email" type="email"></ion-input>
+    <ion-input [(ngModel)]="email" type="email" name="email"></ion-input>
     <ion-text class="ion-text-xs" *ngIf="isUserNameAvailable" color="success"><ion-icon name="checkmark-circle"></ion-icon>Disponible</ion-text>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="firstName" type="text" required minlength="1"></ion-input>
+    <ion-input [(ngModel)]="firstName" type="text" required minlength="1" name="firstName"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Apellido</ion-label>
-    <ion-input [(ngModel)]="lastName" type="text" required minlength="1"></ion-input>
+    <ion-input [(ngModel)]="lastName" type="text" required minlength="1" name="lastName"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Fecha Nacimiento</ion-label>
-    <ion-input [(ngModel)]="bornDate" type="text" required minlength="1"></ion-input>
+    <ion-input [(ngModel)]="bornDate" type="text" required minlength="1" name="bornDate"></ion-input>
     <ion-button color="dark" expand="block" (click)="toggleDatePicker()">
       <ion-icon name="calendar-outline"></ion-icon>
     </ion-button>
@@ -34,18 +34,18 @@
 
   <ion-item>
     <ion-label position="floating">Direccion</ion-label>
-    <ion-input [(ngModel)]="address" type="text" required minlength="1"></ion-input>
+    <ion-input [(ngModel)]="address" type="text" required minlength="1" name="address"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Contraseña</ion-label>
-    <ion-input [(ngModel)]="password" type="password"></ion-input>
+    <ion-input [(ngModel)]="password" type="password" name="password"></ion-input>
     <ion-note> La contraseña debe contar con una mayuscula, un numero y entre 8 a 10 caracteres</ion-note>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Repita la contraseña</ion-label>
-    <ion-input [(ngModel)]="passwordRepeat" type="password"></ion-input>
+    <ion-input [(ngModel)]="passwordRepeat" type="password" name="passwordRepeat"></ion-input>
   </ion-item>
 
   <ion-button class="ion-padding" color="dark" expand="block" (click)="register()">Registrar usuario</ion-button>
